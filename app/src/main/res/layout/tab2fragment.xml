@@ -6,7 +6,7 @@
     tools:context=".Tab2Fragment" >
 
     <ListView
-        android:id="@+id/past_list_2"
+        android:id="@+id/future_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

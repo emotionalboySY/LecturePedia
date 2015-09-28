@@ -26,12 +26,36 @@ public class List_TabPast extends Fragment {
 
         mListView = (ListView) v.findViewById(R.id.past_list);
 
+        Bundle args = new Bundle();
+        args = getArguments();
+        int position = args.getInt("final position");
+
         listCardItems = new ArrayList<Item_CardList>();
+        switch(position) {
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+        }
 
         Adapter_CardItem cardItemAdapter = new Adapter_CardItem(getActivity().getApplicationContext(), R.layout.card_item, listCardItems);
-
         mListView.setAdapter(cardItemAdapter);
-
         return v;
     }
 }
