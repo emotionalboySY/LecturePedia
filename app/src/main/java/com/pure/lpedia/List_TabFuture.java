@@ -3,9 +3,11 @@ package com.pure.lpedia;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,9 +30,9 @@ public class List_TabFuture extends Fragment {
 
         Bundle args = new Bundle();
         args = getArguments();
-        int position = args.getInt("final position");
+        int pos = args.getInt("final position");
 
-        switch(position) {
+        switch(pos) {
             case 0:
                 break;
             case 1:
@@ -59,6 +61,14 @@ public class List_TabFuture extends Fragment {
         Adapter_CardItem cardItemAdapter = new Adapter_CardItem(getActivity().getApplicationContext(), R.layout.card_item, listCardItems);
 
         mListView.setAdapter(cardItemAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                FragmentManager fragmentManager = getFragmentManager();
+
+            }
+        });
 
         return v;
     }

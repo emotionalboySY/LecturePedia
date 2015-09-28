@@ -92,7 +92,6 @@ public class MainActivity extends ActionBarActivity {
                     case 9: f = new Lec_9_Rob(); break;
                 }
 
-
                 fragmentManager.beginTransaction().replace(R.id.main_content, f).commit();
 
                 Bundle args = new Bundle();
