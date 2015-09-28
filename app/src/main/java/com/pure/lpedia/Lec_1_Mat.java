@@ -23,6 +23,7 @@ public class Lec_1_Mat extends Fragment implements
     private Adapter_TabPage myViewPagerAdapter;
     int i = 0;
     View v;
+    Bundle args;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -30,6 +31,10 @@ public class Lec_1_Mat extends Fragment implements
         v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
 
         i++;
+
+        args = new Bundle();
+        args = getArguments();
+        args.getInt("position");
 
         //init tabhost
         this.initializeTabHost(savedInstanceState);
@@ -62,8 +67,16 @@ public class Lec_1_Mat extends Fragment implements
 
         List<Fragment> fragments = new Vector<Fragment>();
 
-        fragments.add(new List_TabPast());
-        fragments.add(new List_TabFuture());
+        Fragment TabPast = new List_TabPast();
+        Fragment TabFuture = new List_TabFuture();
+
+        fragments.add(TabPast);
+        fragments.add(TabFuture);
+
+        Bundle args2 = new Bundle();
+        args2.putInt("final position", args.getInt("position"));
+        TabPast.setArguments(args2);
+        TabFuture.setArguments(args2);
 
         this.myViewPagerAdapter = new Adapter_TabPage(
                 getChildFragmentManager(), fragments);

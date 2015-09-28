@@ -19,6 +19,7 @@ public class List_TabFuture extends Fragment {
     List<Item_CardList> listCardItems;
 
     View v;
+    Bundle args;
 
     @Nullable
     @Override
@@ -28,7 +29,6 @@ public class List_TabFuture extends Fragment {
 
         mListView = (ListView) v.findViewById(R.id.future_list);
 
-        Bundle args = new Bundle();
         args = getArguments();
         int pos = args.getInt("final position");
 
@@ -65,8 +65,13 @@ public class List_TabFuture extends Fragment {
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentManager fragmentManager = getFragmentManager();
 
+                Fragment f = new Card_Detail();
+
+                args.putInt("detail position", position);
+                f.setArguments(args);
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.main_content, f);
             }
         });
 
