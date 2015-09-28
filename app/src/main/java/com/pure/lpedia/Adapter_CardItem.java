@@ -28,14 +28,12 @@ public class Adapter_CardItem extends ArrayAdapter<Item_CardList> {
 
         View v = View.inflate(context, resLayout, null);
 
-        ImageView img = (ImageView) v.findViewById(R.id.card_image);
         TextView tv1 = (TextView) v.findViewById(R.id.card_title);
         TextView tv2 = (TextView) v.findViewById(R.id.card_speaker);
         TextView tv3 = (TextView) v.findViewById(R.id.card_content);
 
         Item_CardList cardItem = listCardItems.get(position);
 
-        img.setImageResource(cardItem.getCardImage());
         tv1.setText(cardItem.getCardTitle());
         tv2.setText(cardItem.getCardSpeaker());
         tv3.setText(cardItem.getCardContent());

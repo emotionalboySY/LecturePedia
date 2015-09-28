@@ -15,7 +15,8 @@ import android.widget.TabHost.TabContentFactory;
 import java.util.List;
 import java.util.Vector;
 
-public class Lec_8_Ict extends Fragment implements ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
+public class Lec_1_Ted extends Fragment implements
+        ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener{
 
     private TabHost tabHost;
     private ViewPager viewPager;

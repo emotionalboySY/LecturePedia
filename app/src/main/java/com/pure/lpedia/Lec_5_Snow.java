@@ -10,11 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.TabHost;
+import android.widget.TabHost.TabContentFactory;
 
 import java.util.List;
 import java.util.Vector;
 
-public class Lec_2_Sci extends Fragment implements ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
+public class Lec_5_Snow extends Fragment implements ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
 
     private TabHost tabHost;
     private ViewPager viewPager;
@@ -34,7 +35,6 @@ public class Lec_2_Sci extends Fragment implements ViewPager.OnPageChangeListene
         args = getArguments();
         args.getInt("position");
 
-
         //init tabhost
         this.initializeTabHost(savedInstanceState);
 
@@ -44,7 +44,7 @@ public class Lec_2_Sci extends Fragment implements ViewPager.OnPageChangeListene
         return v;
     }
 
-    class FakeContent implements TabHost.TabContentFactory {
+    class FakeContent implements TabContentFactory {
 
         Context context;
         public FakeContent(Context mcontext)

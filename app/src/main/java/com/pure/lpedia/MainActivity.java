@@ -80,16 +80,12 @@ public class MainActivity extends ActionBarActivity {
                 Fragment f = null;
 
                 switch(position) {
-                    case 0: f = new Lec_0_All(); break;
-                    case 1: f = new Lec_1_Mat(); break;
-                    case 2: f = new Lec_2_Sci(); break;
-                    case 3: f = new Lec_3_Eng(); break;
-                    case 4: f = new Lec_4_Edu(); break;
-                    case 5: f = new Lec_5_Hum(); break;
-                    case 6: f = new Lec_6_Fou(); break;
-                    case 7: f = new Lec_7_Eco(); break;
-                    case 8: f = new Lec_8_Ict(); break;
-                    case 9: f = new Lec_9_Rob(); break;
+                    case 0: f = new Lec_1_Ted(); break;
+                    case 1: f = new Lec_2_15min(); break;
+                    case 2: f = new Lec_3_100(); break;
+                    case 3: f = new Lec_4_Kocw(); break;
+                    case 4: f = new Lec_5_Snow(); break;
+                    case 5: f = new Lec_6_Snu(); break;
                 }
 
                 fragmentManager.beginTransaction().replace(R.id.main_content, f).commit();
@@ -144,7 +140,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Lec_1_Mat/Up button, so long
+        // automatically handle clicks on the Lec_1_Ted/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
         if(actionBarDrawerToggle.onOptionsItemSelected(item)) {

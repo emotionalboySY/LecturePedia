@@ -35,7 +35,7 @@ public class List_TabPast extends Fragment {
         listCardItems = new ArrayList<Item_CardList>();
         switch(position) {
             case 0:
-                break;
+            break;
             case 1:
                 break;
             case 2:
@@ -45,14 +45,6 @@ public class List_TabPast extends Fragment {
             case 4:
                 break;
             case 5:
-                break;
-            case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-            case 9:
                 break;
         }
 
