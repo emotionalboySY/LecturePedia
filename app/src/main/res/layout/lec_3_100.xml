@@ -6,7 +6,7 @@
     tools:context=".Tab1Fragment" >
 
     <ListView
-        android:id="@+id/list_lec_300"
+        android:id="@+id/list_lec_100"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

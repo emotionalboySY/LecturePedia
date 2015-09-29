@@ -27,7 +27,7 @@ public class Adapter_CardItem_Snu extends ArrayAdapter<Item_CardList_Snu> {
 
         View v = View.inflate(context, resLayout, null);
 
-        TextView title = (TextView) v.findViewById(R.id.card_title);
+        TextView title = (TextView) v.findViewById(R.id.card_title_snu);
 
         Item_CardList_Snu cardItem = listCardItems.get(position);
 

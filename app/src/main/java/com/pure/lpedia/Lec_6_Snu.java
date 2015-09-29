@@ -75,7 +75,7 @@ public class Lec_6_Snu extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            for(Element e : doc.select("table.ocw_list tbody tr td[width=230px]")){
+            for(Element e : doc.select("div#ocw_list1 table.ocw_list tbody tr td[width=230px]")){
                 String Title = e.select("a").text();
                 Item_CardList_Snu data = new Item_CardList_Snu(Title);
                 listCardItems.add(data);

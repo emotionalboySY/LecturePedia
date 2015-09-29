@@ -58,7 +58,7 @@ public class Lec_2_Ted extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             try {
-                doc = Jsoup.connect("http://www.onoffmix.com/event?c=16").get();
+                doc = Jsoup.connect("http://tvcast.naver.com/ted/clips").get();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -73,13 +73,10 @@ public class Lec_2_Ted extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            for(Element e : doc.select("div.wrp_cds._cardArea div.cds_area._infiniteCardArea div")){
-                String Title = e.select("div dl dt a tooltip").text();
-                int num = Title.indexOf(": ");
-                String Name = Title.substring(1, num);
-                Title = Title.substring(num+2);
-                String Date = e.select("dd.meta span.time").text();
-                Item_CardList_Ted data = new Item_CardList_Ted(Title, Name, Date);
+            for(Element e : doc.select("div.wrap.ch_clip._cardArea div.cds_area._infiniteCardArea div.cds._MM_CARD")){
+                String Title = e.select("div.cds_type.uio_thumb dl.cds_info dt.title h3 span").text();
+                String Date = e.select("div.cds_type.uio_thumb dl.cds_info dd.meta span.time").text();
+                Item_CardList_Ted data = new Item_CardList_Ted(Title, Date);
                 listCardItems.add(data);
             }
             cardItemAdapter.notifyDataSetChanged();

@@ -31,9 +31,9 @@ public class Lec_5_Snow extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        v = inflater.inflate(R.layout.lec_1_oomx, container, false);
+        v = inflater.inflate(R.layout.lec_5_snow, container, false);
 
-        mListView = (ListView) v.findViewById(R.id.list_lec_Oomx);
+        mListView = (ListView) v.findViewById(R.id.list_lec_snow);
 
         listCardItems = new ArrayList<Item_CardList_Snow>();
 
@@ -59,7 +59,7 @@ public class Lec_5_Snow extends Fragment {
         @Override
         protected String doInBackground(String... params) {
             try {
-                doc = Jsoup.connect("http://www.onoffmix.com/event?c=16").get();
+                doc = Jsoup.connect("http://www.snow.or.kr/common/lecturelast.html").get();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -74,9 +74,9 @@ public class Lec_5_Snow extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
-            for(Element e : doc.select("div.content div.eventMain div.sideLeft div[class=contentBox todayEventArea] ul.todayEvent")){
-                String Title = e.select("li.eventTitle a").text();
-                String Date = e.select("li.eventBottomArea ul li.eventPersonnel a span").text();
+            for(Element e : doc.select("div.tabsort.mt3 table tbody table tbody")){
+                String Title = e.select("tr th a").text();
+                String Date = e.select("tr td.txt").text();
                 Item_CardList_Snow data = new Item_CardList_Snow(Title, Date);
                 listCardItems.add(data);
             }

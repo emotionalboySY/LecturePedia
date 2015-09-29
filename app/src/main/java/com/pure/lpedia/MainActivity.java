@@ -78,8 +78,8 @@ public class MainActivity extends ActionBarActivity {
                     case 0: f = new Lec_1_Oomx(); break;
                     case 1: f = new Lec_2_Ted(); break;
                     case 2: f = new Lec_3_100(); break;
-                    case 4: f = new Lec_5_Snow(); break;
-                    case 5: f = new Lec_6_Snu(); break;
+                    case 3: f = new Lec_5_Snow(); break;
+                    case 4: f = new Lec_6_Snu(); break;
                 }
 
                 fragmentManager.beginTransaction().replace(R.id.main_content, f).commit();

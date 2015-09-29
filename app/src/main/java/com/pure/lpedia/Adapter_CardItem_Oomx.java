@@ -27,8 +27,8 @@ public class Adapter_CardItem_Oomx extends ArrayAdapter<Item_CardList_Oomx> {
 
         View v = View.inflate(context, resLayout, null);
 
-        TextView title = (TextView) v.findViewById(R.id.card_title);
-        TextView Date = (TextView) v.findViewById(R.id.card_date);
+        TextView title = (TextView) v.findViewById(R.id.card_title_oomx);
+        TextView Date = (TextView) v.findViewById(R.id.card_date_oomx);
 
         Item_CardList_Oomx cardItem = listCardItems.get(position);
 

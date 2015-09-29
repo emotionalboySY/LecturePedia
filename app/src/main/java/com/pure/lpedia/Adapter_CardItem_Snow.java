@@ -27,15 +27,13 @@ public class Adapter_CardItem_Snow extends ArrayAdapter<Item_CardList_Snow> {
 
         View v = View.inflate(context, resLayout, null);
 
-        TextView title = (TextView) v.findViewById(R.id.ted_card_title);
-        TextView Name = (TextView) v.findViewById(R.id.ted_card_name);
-        TextView Date = (TextView) v.findViewById(R.id.ted_card_date);
+        TextView title = (TextView) v.findViewById(R.id.card_title_snow);
+        TextView Name = (TextView) v.findViewById(R.id.card_name_snow);
 
         Item_CardList_Snow cardItem = listCardItems.get(position);
 
         title.setText(cardItem.getCardTitle());
         Name.setText(cardItem.getCardName());
-        Date.setText(cardItem.getCardDate());
 
         return v;
     }

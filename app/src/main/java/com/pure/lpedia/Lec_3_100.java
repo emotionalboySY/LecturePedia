@@ -33,7 +33,7 @@ public class Lec_3_100 extends Fragment {
 
         v = inflater.inflate(R.layout.lec_3_100, container, false);
 
-        mListView = (ListView) v.findViewById(R.id.list_lec_300);
+        mListView = (ListView) v.findViewById(R.id.list_lec_100);
 
         listCardItems = new ArrayList<Item_CardList_100>();
 

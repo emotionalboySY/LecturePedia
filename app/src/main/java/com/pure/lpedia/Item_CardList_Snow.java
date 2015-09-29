@@ -5,13 +5,11 @@ public class Item_CardList_Snow {
 
     private String CardTitle;
     private String CardName;
-    private String CardDate;
 
-    public Item_CardList_Snow(String CardTitle, String CardName, String CardDate) {
+    public Item_CardList_Snow(String CardTitle, String CardName) {
         super();
         this.CardTitle = CardTitle;
         this.CardName = CardName;
-        this.CardDate = CardDate;
     }
 
     public String getCardTitle() {
@@ -28,13 +26,5 @@ public class Item_CardList_Snow {
 
     public void setCardName(String cardName) {
         CardName = cardName;
-    }
-
-    public String getCardDate() {
-        return CardDate;
-    }
-
-    public void setCardDate(String cardDate) {
-        CardDate = cardDate;
     }
 }

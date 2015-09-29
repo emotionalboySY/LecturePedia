@@ -27,9 +27,9 @@ public class Adapter_CardItem_100 extends ArrayAdapter<Item_CardList_100> {
 
         View v = View.inflate(context, resLayout, null);
 
-        TextView title = (TextView) v.findViewById(R.id.card_title);
-        TextView Name = (TextView) v.findViewById(R.id.card_name);
-        TextView Date = (TextView) v.findViewById(R.id.card_date);
+        TextView title = (TextView) v.findViewById(R.id.card_title_100);
+        TextView Name = (TextView) v.findViewById(R.id.card_name_100);
+        TextView Date = (TextView) v.findViewById(R.id.card_date_100);
 
         Item_CardList_100 cardItem = listCardItems.get(position);
 
