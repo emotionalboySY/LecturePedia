@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
 
     DrawerLayout drawerLayout;
     RelativeLayout drawerPane;
-    GridView lvNav;
+    ListView lvNav;
 
     List<Item_NavList> listNavItems;
     int i = 0;
@@ -42,19 +42,14 @@ public class MainActivity extends ActionBarActivity {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawerPane = (RelativeLayout) findViewById(R.id.drawer_pane);
-        lvNav = (GridView) findViewById(R.id.nav_GridList);
+        lvNav = (ListView) findViewById(R.id.nav_NavList);
 
         listNavItems = new ArrayList<Item_NavList>();
-        listNavItems.add(new Item_NavList("전체강의", R.drawable.nav_ic_all));
-        listNavItems.add(new Item_NavList("수학", R.drawable.nav_ic_mat));
-        listNavItems.add(new Item_NavList("과학", R.drawable.nav_ic_sci));
-        listNavItems.add(new Item_NavList("영어", R.drawable.nav_ic_eng));
-        listNavItems.add(new Item_NavList("교육", R.drawable.nav_ic_edu));
-        listNavItems.add(new Item_NavList("인문학", R.drawable.nav_ic_hum));
-        listNavItems.add(new Item_NavList("벤처/창업", R.drawable.nav_ic_sta));
-        listNavItems.add(new Item_NavList("IT/컴퓨터", R.drawable.nav_ic_ict));
-        listNavItems.add(new Item_NavList("로봇공학", R.drawable.nav_ic_rob));
-        listNavItems.add(new Item_NavList("경제", R.drawable.nav_ic_eco));
+        listNavItems.add(new Item_NavList("온오프믹스", "글로벌 모임문화플랫폼", R.drawable.lec_icon_oomx_200));
+        listNavItems.add(new Item_NavList("TED", "위대한 사람들의 위대한 이야기",  R.drawable.lec_icon_ted_200));
+        listNavItems.add(new Item_NavList("KBS 강연 100˚c", "진솔한 강연으로 한 사람의 인생을 변화시키는 그 순간!", R.drawable.lec_icon_100_200));
+        listNavItems.add(new Item_NavList("SNOW", "숙명여대 열린강의 서비스", R.drawable.lec_icon_snow_200));
+        listNavItems.add(new Item_NavList("SNUi", "서울대학교 평생교육원 열린강좌", R.drawable.lec_icon_snui_200));
 
         Adapter_NavGridList navListAdapter = new Adapter_NavGridList(getApplicationContext(), R.layout.nav_item, listNavItems);
 
@@ -80,10 +75,9 @@ public class MainActivity extends ActionBarActivity {
                 Fragment f = null;
 
                 switch(position) {
-                    case 0: f = new Lec_1_Ted(); break;
-                    case 1: f = new Lec_2_15min(); break;
+                    case 0: f = new Lec_1_Oomx(); break;
+                    case 1: f = new Lec_2_Ted(); break;
                     case 2: f = new Lec_3_100(); break;
-                    case 3: f = new Lec_4_Kocw(); break;
                     case 4: f = new Lec_5_Snow(); break;
                     case 5: f = new Lec_6_Snu(); break;
                 }
@@ -140,7 +134,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Lec_1_Ted/Up button, so long
+        // automatically handle clicks on the Lec_1_Oomx/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
 
         if(actionBarDrawerToggle.onOptionsItemSelected(item)) {

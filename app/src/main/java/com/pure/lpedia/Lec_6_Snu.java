@@ -1,6 +1,7 @@
 package com.pure.lpedia;
 
-import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -8,127 +9,78 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.HorizontalScrollView;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TabHost;
-import android.widget.TabHost.TabContentFactory;
 
-import java.util.List;
-import java.util.Vector;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
-public class Lec_6_Snu extends Fragment implements ViewPager.OnPageChangeListener, TabHost.OnTabChangeListener {
+import java.io.IOException;
+import java.util.ArrayList;
 
-    private TabHost tabHost;
-    private ViewPager viewPager;
-    private Adapter_TabPage myViewPagerAdapter;
-    int i = 0;
+public class Lec_6_Snu extends Fragment {
+
     View v;
+    ListView mListView;
+    ArrayList<Item_CardList_Snu> listCardItems;
+    Adapter_CardItem_Snu cardItemAdapter;
     Bundle args;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        v = inflater.inflate(R.layout.tabs_viewpager_layout, container, false);
+        v = inflater.inflate(R.layout.lec_6_snu, container, false);
 
-        i++;
+        mListView = (ListView) v.findViewById(R.id.list_lec_snu);
 
-        args = new Bundle();
-        args = getArguments();
-        args.getInt("position");
+        listCardItems = new ArrayList<Item_CardList_Snu>();
 
-        //init tabhost
-        this.initializeTabHost(savedInstanceState);
+        new ListSync().execute();
 
-        //init ViewPager
-        this.initializeViewPager();
+        cardItemAdapter = new Adapter_CardItem_Snu(getActivity().getApplicationContext(), R.layout.card_item_snu, listCardItems);
+        mListView.setAdapter(cardItemAdapter);
+
+        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), Card_Detail_Snu.class);
+                startActivity(intent);
+            }
+        });
 
         return v;
     }
 
-    class FakeContent implements TabContentFactory {
+    class ListSync extends AsyncTask<String,String,String> {
 
-        Context context;
-        public FakeContent(Context mcontext)
-        {
-            context = mcontext;
+        Document doc;
+        @Override
+        protected String doInBackground(String... params) {
+            try {
+                doc = Jsoup.connect("http://snui.snu.ac.kr/ocw/index.php?mode=list&best=3").get();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return null;
         }
 
         @Override
-        public View createTabContent(String tag) {
-
-            View fakeView = new View(context);
-            fakeView.setMinimumHeight(0);
-            fakeView.setMinimumWidth(0);
-            return fakeView;
+        protected void onPreExecute() {
+            super.onPreExecute();
         }
-    }
 
-    private void initializeViewPager() {
-
-        List<Fragment> fragments = new Vector<Fragment>();
-
-        Fragment TabPast = new List_TabPast();
-        Fragment TabFuture = new List_TabFuture();
-
-        fragments.add(TabPast);
-        fragments.add(TabFuture);
-
-        Bundle args2 = new Bundle();
-        args2.putInt("final position", args.getInt("position"));
-        TabPast.setArguments(args2);
-        TabFuture.setArguments(args2);
-
-        this.myViewPagerAdapter = new Adapter_TabPage(
-                getChildFragmentManager(), fragments);
-        this.viewPager = (ViewPager) v.findViewById(R.id.view_pager);
-        this.viewPager.setAdapter(this.myViewPagerAdapter);
-        viewPager.setOnPageChangeListener(this);
-
-    }
-
-    private void initializeTabHost(Bundle args) {
-
-        tabHost = (TabHost) v.findViewById(android.R.id.tabhost);
-        tabHost.setup();
-
-        TabHost.TabSpec tabSpec;
-
-        tabSpec = tabHost.newTabSpec(getString(R.string.tab_future));
-        tabSpec.setIndicator(getString(R.string.tab_future));
-        tabSpec.setContent(new FakeContent(getActivity()));
-        tabHost.addTab(tabSpec);
-
-        tabSpec = tabHost.newTabSpec(getString(R.string.tab_past));
-        tabSpec.setIndicator(getString(R.string.tab_past));
-        tabSpec.setContent(new FakeContent(getActivity()));
-        tabHost.addTab(tabSpec);
-
-        tabHost.setOnTabChangedListener(this);
-
-    }
-
-    @Override
-    public void onTabChanged(String tanId) {
-        int selectedItem = tabHost.getCurrentTab();
-        viewPager.setCurrentItem(selectedItem);
-
-        HorizontalScrollView hScrollView = (HorizontalScrollView) v.findViewById(R.id.h_scroll_view);
-        View tabView = tabHost.getCurrentTabView();
-        int scrollPos = tabView.getLeft()
-                - (hScrollView.getWidth() - tabView.getWidth()) / 2;
-        hScrollView.smoothScrollTo(scrollPos, 0);
-
-    }
-
-    @Override
-    public void onPageScrollStateChanged(int arg0) {
-    }
-
-    @Override
-    public void onPageScrolled(int arg0, float arg1, int arg2) {
-    }
-
-    @Override
-    public void onPageSelected(int position) {
-        this.tabHost.setCurrentTab(position);
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            for(Element e : doc.select("table.ocw_list tbody tr td[width=230px]")){
+                String Title = e.select("a").text();
+                Item_CardList_Snu data = new Item_CardList_Snu(Title);
+                listCardItems.add(data);
+            }
+            cardItemAdapter.notifyDataSetChanged();
+        }
     }
 }

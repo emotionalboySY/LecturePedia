@@ -20,12 +20,12 @@ import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Lec_5_Snow extends Fragment {
+public class Lec_1_Oomx extends Fragment {
 
     View v;
     ListView mListView;
-    ArrayList<Item_CardList_Snow> listCardItems;
-    Adapter_CardItem_Snow cardItemAdapter;
+    ArrayList<Item_CardList_Oomx> listCardItems;
+    Adapter_CardItem_Oomx cardItemAdapter;
     Bundle args;
 
     @Override
@@ -35,17 +35,17 @@ public class Lec_5_Snow extends Fragment {
 
         mListView = (ListView) v.findViewById(R.id.list_lec_Oomx);
 
-        listCardItems = new ArrayList<Item_CardList_Snow>();
+        listCardItems = new ArrayList<Item_CardList_Oomx>();
 
         new ListSync().execute();
 
-        cardItemAdapter = new Adapter_CardItem_Snow(getActivity().getApplicationContext(), R.layout.card_item_snow, listCardItems);
+        cardItemAdapter = new Adapter_CardItem_Oomx(getActivity().getApplicationContext(), R.layout.card_item_oomx, listCardItems);
         mListView.setAdapter(cardItemAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), Card_Detail_Snow.class);
+                Intent intent = new Intent(getActivity(), Card_Detail_Oomx.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +77,7 @@ public class Lec_5_Snow extends Fragment {
             for(Element e : doc.select("div.content div.eventMain div.sideLeft div[class=contentBox todayEventArea] ul.todayEvent")){
                 String Title = e.select("li.eventTitle a").text();
                 String Date = e.select("li.eventBottomArea ul li.eventPersonnel a span").text();
-                Item_CardList_Snow data = new Item_CardList_Snow(Title, Date);
+                Item_CardList_Oomx data = new Item_CardList_Oomx(Title, Date);
                 listCardItems.add(data);
             }
             cardItemAdapter.notifyDataSetChanged();

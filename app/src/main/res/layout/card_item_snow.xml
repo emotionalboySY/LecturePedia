@@ -22,19 +22,11 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
-            
-            <ImageView
-                android:id="@+id/card_image"
-                android:background="#FFFFFF"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_margin="5dp" />
 
             <TextView
-                android:id="@+id/card_title"
+                android:id="@+id/ted_card_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/card_image"
                 android:layout_marginTop="3dp"
                 android:layout_marginLeft="3dp"
                 android:textColor="#FF000000"
@@ -42,7 +34,7 @@
                 android:textSize="17sp" />
 
             <TextView
-                android:id="@+id/card_speaker"
+                android:id="@+id/ted_card_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="15sp"
@@ -53,10 +45,9 @@
                 android:layout_marginRight="5dp" />
 
             <TextView
-                android:id="@+id/card_content"
+                android:id="@+id/ted_card_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/card_image"
                 android:layout_below="@id/card_title"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="3dp"

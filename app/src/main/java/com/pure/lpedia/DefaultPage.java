@@ -10,12 +10,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class DefaultPage extends Fragment {
 
     ListView mListView;
-    List<Item_CardList> listCardItems;
+    List<Item_CardList_100> listCardItems;
     View v;
 
     @Nullable
@@ -26,9 +25,9 @@ public class DefaultPage extends Fragment {
 
         mListView = (ListView) v.findViewById(R.id.card_default);
 
-        listCardItems = new ArrayList<Item_CardList>();
+        listCardItems = new ArrayList<Item_CardList_100>();
 
-        Adapter_CardItem cardItemAdapter = new Adapter_CardItem(getActivity().getApplicationContext(), R.layout.card_item, listCardItems);
+        Adapter_CardItem_100 cardItemAdapter = new Adapter_CardItem_100(getActivity().getApplicationContext(), R.layout.card_item_100, listCardItems);
 
         mListView.setAdapter(cardItemAdapter);
 

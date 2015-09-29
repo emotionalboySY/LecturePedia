@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tab2Fragment" >
+    tools:context=".Tab1Fragment" >
 
     <ListView
-        android:id="@+id/future_list"
+        android:id="@+id/list_lec_ted"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"

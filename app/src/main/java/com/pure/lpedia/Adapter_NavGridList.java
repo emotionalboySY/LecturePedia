@@ -30,9 +30,11 @@ public class Adapter_NavGridList extends ArrayAdapter<Item_NavList> {
 
         ImageView navIcon = (ImageView) v.findViewById(R.id.nav_catIcon);
         TextView catName = (TextView) v.findViewById(R.id.nav_catName);
+        TextView catExp = (TextView) v.findViewById(R.id.nav_catExp);
 
         Item_NavList navItem = listNavItems.get(position);
 
+        catExp.setText(navItem.getExp());
         catName.setText(navItem.getTitle());
         navIcon.setImageResource(navItem.getResIcon());
 

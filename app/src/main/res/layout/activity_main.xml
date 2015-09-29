@@ -37,19 +37,17 @@
         </RelativeLayout>
 
         <!-- Navigation GridView -->
-        <GridView
-            android:id="@+id/nav_GridList"
+        <ListView
+            android:id="@+id/nav_NavList"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/profile_box"
             android:layout_alignParentLeft="true"
-            android:stretchMode="columnWidth"
-            android:numColumns="2"
-            android:verticalSpacing="10dp"
-            android:layout_marginTop="10dp"
+            android:dividerHeight="0dp"
+            android:divider="@null"
             android:background="#ffffff" >
 
-        </GridView>
+        </ListView>
 
     </RelativeLayout>
 
